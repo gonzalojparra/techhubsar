@@ -1,7 +1,9 @@
 import type { Community } from "../types/community";
 export async function fetchCommunities(): Promise<Community[]> {
   try {
-    const response = await fetch("/data/communities.json");
+    const response = await fetch(
+      `${process.env.NEXT_PUBLIC_HOSTNAME}/data/communities.json`
+    );
     if (!response.ok) {
       throw new Error("Failed to fetch communities data");
     }
