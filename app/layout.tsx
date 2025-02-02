@@ -6,6 +6,7 @@ import GitHubLink from "@/components/GitHubLink"
 import Footer from "@/components/Footer"
 import Link from "next/link"
 import type React from "react"
+import { Analytics } from "@vercel/analytics/react"
 
 const inter = Inter({ subsets: ["latin"] })
 
