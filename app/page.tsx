@@ -1,14 +1,17 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import { useIsMobile } from "../hooks/useIsMobile";
+
 import CommunityList from "../components/CommunityList";
 import ArgentinaMap from "../components/ArgentinaMap";
 import AddCommunityButton from "../components/AddCommunityButton";
+
 import { fetchCommunities } from "../utils/fetchCommunities";
-import { useIsMobile } from "../hooks/useIsMobile";
+import type { Community } from "@/types/community";
 
 export default function Home() {
-  const [communities, setCommunities] = useState([]);
+  const [communities, setCommunities] = useState<Community[]>([]);
   const [hoveredCommunityId, setHoveredCommunityId] = useState<string | null>(
     null
   );
