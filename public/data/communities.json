@@ -109,57 +109,5 @@
         "twitter": "mateozaratef"
       }
     ]
-  },
-  {
-    "id": "2",
-    "name": "Córdoba Developers",
-    "shortDescription": "A thriving community of developers in Córdoba",
-    "fullDescription": "Córdoba Developers is a community focused on fostering the growth of developers in Córdoba. We offer mentorship programs, coding challenges, and networking events.",
-    "location": {
-      "lat": -31.4201,
-      "lng": -64.1888
-    },
-    "province": "Córdoba",
-    "category": "Software Development",
-    "website": "https://cordobadev.org",
-    "twitter": "cordobadev",
-    "members": [
-      {
-        "name": "Ana Fernandez",
-        "github": "anafernandez",
-        "twitter": "ana_codes"
-      },
-      {
-        "name": "Luis Perez",
-        "github": "luisperez",
-        "twitter": "luis_developer"
-      }
-    ]
-  },
-  {
-    "id": "3",
-    "name": "Mendoza Tech Hub",
-    "shortDescription": "Bringing together tech enthusiasts in Mendoza",
-    "fullDescription": "Mendoza Tech Hub is an initiative to turn Mendoza into a technology hub. We focus on startups, innovation, and connecting local talent with global opportunities.",
-    "location": {
-      "lat": -32.8908,
-      "lng": -68.8272
-    },
-    "province": "Mendoza",
-    "category": "Startups & Innovation",
-    "website": "https://mendozatechhub.ar",
-    "twitter": "mendozatechhub",
-    "members": [
-      {
-        "name": "Sofia Martinez",
-        "github": "sofiamartinez",
-        "twitter": "sofia_innovates"
-      },
-      {
-        "name": "Diego Sanchez",
-        "github": "diegosanchez",
-        "twitter": "diego_startup"
-      }
-    ]
   }
 ]
