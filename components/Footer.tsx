@@ -45,7 +45,7 @@ export default function Footer() {
           <div>
             <h3 className="text-lg font-semibold mb-2">Connect</h3>
             <a
-              href="https://github.com/yourusername/TechHubsAr"
+              href="https://github.com/TechHubsAr/techhubsar"
               target="_blank"
               rel="noopener noreferrer"
               className="flex items-center text-sm text-primary hover:underline"
