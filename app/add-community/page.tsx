@@ -11,7 +11,7 @@ export default function AddCommunity() {
           <li>Fork the TechHubsAr repository on GitHub.</li>
           <li>Clone your forked repository to your local machine.</li>
           <li>Create a new branch for your changes.</li>
-          <li>Add the new community information to the appropriate JSON file.</li>
+          <li>Add the new community information to the /data/communities.json JSON file.</li>
           <li>Commit your changes and push to your forked repository.</li>
           <li>Create a Pull Request (PR) from your fork to the main TechHubsAr repository.</li>
         </ol>
