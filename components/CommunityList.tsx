@@ -1,106 +1,179 @@
-"use client";
+'use client';
 
-import { useRef, useEffect } from "react";
-import Link from "next/link";
-import type { Community } from "../types/community";
-import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
-import { Globe, Twitter } from "lucide-react";
-import { useIsMobile } from "../hooks/useIsMobile";
+import Link from 'next/link';
+import { useState } from 'react';
+import { Globe, Twitter, MapPin } from 'lucide-react';
+import { motion } from 'framer-motion';
 
-interface CommunityListProps {
+import { Badge } from '@/components/ui/badge';
+import { Button } from '@/components/ui/button';
+import {
+  Pagination,
+  PaginationContent,
+  PaginationItem,
+  PaginationLink,
+  PaginationNext,
+  PaginationPrevious,
+} from '@/components/ui/pagination';
+import { cn } from '@/lib/utils';
+
+import type { Community } from '@/types/community';
+
+interface CommunityCardProps {
+  community: Community;
+  isHovered: boolean;
+}
+
+interface PaginatedListProps {
   communities: Community[];
   hoveredCommunityId: string | null;
+  itemsPerPage?: number;
+}
+
+function CommunityInfo({ community }: { community: Community }) {
+  return (
+    <div className='flex items-center justify-between w-full gap-3'>
+      <div className='flex flex-col space-y-2'>
+        <h3 className='text-lg font-semibold tracking-tight'>
+          {community.name}
+        </h3>
+        <p className='text-sm text-muted-foreground flex items-center gap-1'>
+          <MapPin className='h-3 w-3' />
+          {community.province}
+        </p>
+        <Badge variant='outline' className='w-fit'>
+          {community.category}
+        </Badge>
+      </div>
+    </div>
+  );
+}
+
+function CommunityDescription({ community }: { community: Community }) {
+  return (
+    <div className='h-full bg-card/30 backdrop-blur-sm rounded-lg border border-border/50 p-4 flex flex-col justify-between'>
+      <p className='text-sm text-muted-foreground leading-relaxed line-clamp-3'>
+        {community.shortDescription}
+      </p>
+      <div className='flex justify-end space-x-2 pt-2'>
+        {community.website && (
+          <a href={community.website} target='_blank' rel='noopener noreferrer'>
+            <Button variant='ghost' size='sm' className='hover:bg-accent/10'>
+              <Globe className='h-4 w-4' />
+            </Button>
+          </a>
+        )}
+        {community.twitter && (
+          <a href={`https://twitter.com/${community.twitter}`} target='_blank' rel='noopener noreferrer'>
+            <Button variant='ghost' size='sm' className='hover:bg-accent/10'>
+              <Twitter className='h-4 w-4' />
+            </Button>
+          </a>
+        )}
+      </div>
+    </div>
+  );
+}
+
+function CommunityCard({ community, isHovered }: CommunityCardProps) {
+  const [localHovered, setLocalHovered] = useState(false);
+
+  return (
+    <div
+      onMouseEnter={() => setLocalHovered(true)}
+      onMouseLeave={() => setLocalHovered(false)}
+      className={cn(
+        'group w-full h-[280px] p-5 bg-background/50 backdrop-blur-sm rounded-xl flex flex-col gap-4 cursor-pointer border border-border/50 transition-all duration-300 ease-out hover:bg-accent/5',
+        (localHovered || isHovered) && 'ring-2 ring-primary/50 ring-offset-2 ring-offset-background shadow-lg'
+      )}
+    >
+      <motion.div layout className='flex-none'>
+        <CommunityInfo community={community} />
+      </motion.div>
+      <motion.div layout className='flex-1'>
+        <CommunityDescription community={community} />
+      </motion.div>
+    </div>
+  );
 }
 
 export default function CommunityList({
   communities,
   hoveredCommunityId,
-}: CommunityListProps) {
-  const listRef = useRef<HTMLUListElement>(null);
-  const itemRefs = useRef<{ [key: string]: HTMLLIElement | null }>({});
-  const isMobile = useIsMobile();
+  itemsPerPage = 6,
+}: PaginatedListProps) {
+  const [currentPage, setCurrentPage] = useState(1);
 
-  useEffect(() => {
-    if (
-      !isMobile &&
-      hoveredCommunityId &&
-      itemRefs.current[hoveredCommunityId] &&
-      listRef.current
-    ) {
-      itemRefs.current[hoveredCommunityId]?.scrollIntoView({
-        behavior: "smooth",
-        block: "nearest",
-      });
-    }
-  }, [hoveredCommunityId, isMobile]);
+  const totalPages = Math.ceil(communities.length / itemsPerPage);
+  const startIndex = (currentPage - 1) * itemsPerPage;
+  const endIndex = startIndex + itemsPerPage;
+  const currentCommunities = communities.slice(startIndex, endIndex);
+
+  const handlePageChange = (page: number) => {
+    setCurrentPage(page);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
 
   return (
-    <ul
-      ref={listRef}
-      className='space-y-6 overflow-y-auto max-h-[500px] lg:max-h-[calc(100vh-200px)]'
-    >
-      {communities.map((community) => (
-        <Link
-          key={community.id}
-          href={`/community/${community.id}`}
-          className='block'
-        >
-          <li
-            ref={(el) => {
-              if (el) {
-                itemRefs.current[community.id] = el;
-              }
-            }}
-            className={`border-b border-border p-4 pb-4 transition-colors rounded-md hover:bg-gray-700 ${
-              hoveredCommunityId === community.id
-                ? "bg-gray-200 bg-opacity-30"
-                : "bg-gray-800"
-            }`}
+    <div className='space-y-8'>
+      <motion.ul
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6'
+      >
+        {currentCommunities.map((community) => (
+          <motion.li
+            key={community.id}
+            initial={{ y: 20, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
           >
-            <h3 className='text-xl font-semibold mb-2'>{community.name}</h3>
-            <p
-              className={`${
-                hoveredCommunityId === community.id
-                  ? "text-white"
-                  : "text-muted-foreground"
-              } mb-2`}
-            >
-              {community.shortDescription}
-            </p>
-            <div className='flex items-center justify-between'>
-              <Badge variant='secondary'>{community.category}</Badge>
-              <div
-                className='flex space-x-2'
-                onClick={(e) => e.preventDefault()}
-              >
-                {community.website && (
-                  <a
-                    href={community.website}
-                    target='_blank'
-                    rel='noopener noreferrer'
-                  >
-                    <Button variant='ghost' size='icon'>
-                      <Globe className='h-4 w-4' />
-                    </Button>
-                  </a>
+            <Link href={`/community/${community.id}`}>
+              <CommunityCard
+                community={community}
+                isHovered={hoveredCommunityId === community.id}
+              />
+            </Link>
+          </motion.li>
+        ))}
+      </motion.ul>
+
+      {totalPages > 1 && (
+        <Pagination className='flex justify-center pt-8'>
+          <PaginationContent className='bg-card/30 backdrop-blur-sm rounded-lg border border-border/50 p-2'>
+            <PaginationItem>
+              <PaginationPrevious
+                onClick={() => currentPage > 1 && handlePageChange(currentPage - 1)}
+                className={cn(
+                  'cursor-pointer',
+                  currentPage === 1 ? 'pointer-events-none opacity-50 cursor-not-allowed' : ''
                 )}
-                {community.twitter && (
-                  <a
-                    href={`https://twitter.com/${community.twitter}`}
-                    target='_blank'
-                    rel='noopener noreferrer'
-                  >
-                    <Button variant='ghost' size='icon'>
-                      <Twitter className='h-4 w-4' />
-                    </Button>
-                  </a>
+              />
+            </PaginationItem>
+
+            {Array.from({ length: totalPages }, (_, i) => i + 1).map((page) => (
+              <PaginationItem key={page}>
+                <PaginationLink
+                  onClick={() => handlePageChange(page)}
+                  isActive={currentPage === page}
+                  className="cursor-pointer"
+                >
+                  {page}
+                </PaginationLink>
+              </PaginationItem>
+            ))}
+
+            <PaginationItem>
+              <PaginationNext
+                onClick={() => currentPage < totalPages && handlePageChange(currentPage + 1)}
+                className={cn(
+                  'cursor-pointer',
+                  currentPage === totalPages ? 'pointer-events-none opacity-50 cursor-not-allowed' : ''
                 )}
-              </div>
-            </div>
-          </li>
-        </Link>
-      ))}
-    </ul>
+              />
+            </PaginationItem>
+          </PaginationContent>
+        </Pagination>
+      )}
+    </div>
   );
 }
