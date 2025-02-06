@@ -3,7 +3,7 @@
 import Link from 'next/link';
 import { useState, useEffect } from 'react';
 import { motion } from 'motion/react';
-import { Twitter, Globe, MapPin } from 'lucide-react';
+import { Twitter, Globe, MapPin, ArrowRight } from 'lucide-react';
 
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
@@ -215,9 +215,10 @@ export default function CommunitiesPage() {
                   <CardFooter>
                     <Link
                       href={`/community/${community.id}`}
-                      className='text-sm font-medium text-primary hover:text-primary/80 transition-colors group-hover:underline'
+                      className='text-sm font-medium text-primary hover:text-primary/80 transition-colors group-hover:underline flex items-center gap-1'
                     >
-                      View Details →
+                      View Details
+                      <ArrowRight className='h-4 w-4 opacity-0 group-hover:opacity-100 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all' />
                     </Link>
                   </CardFooter>
                 </Card>

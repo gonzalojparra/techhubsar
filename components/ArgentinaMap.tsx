@@ -3,6 +3,7 @@
 import type React from 'react';
 import { useState, useCallback, useRef } from 'react';
 import { useRouter } from 'next/navigation';
+import { AnimatePresence, motion } from 'motion/react';
 import {
   ComposableMap,
   Geographies,
@@ -12,9 +13,8 @@ import {
 } from 'react-simple-maps';
 import { useIsMobile } from '@/hooks/useIsMobile';
 
-import type { Community } from '@/types/community';
-import { AnimatePresence, motion } from 'motion/react';
 import { cn } from '@/lib/utils';
+import type { Community } from '@/types/community';
 
 const geoUrl = '/argentina-provinces.json';
 

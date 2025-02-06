@@ -2,7 +2,7 @@
 
 import Link from 'next/link';
 import { useState } from 'react';
-import { Globe, Twitter, MapPin } from 'lucide-react';
+import { Globe, MapPin } from 'lucide-react';
 import { motion } from 'motion/react';
 
 import { Badge } from '@/components/ui/badge';
@@ -18,6 +18,7 @@ import {
 import { cn } from '@/lib/utils';
 
 import type { Community } from '@/types/community';
+import XformerlyTwitter from './ui/x-formerly-twitter';
 
 interface CommunityCardProps {
   community: Community;
@@ -57,18 +58,30 @@ function CommunityDescription({ community }: { community: Community }) {
       </p>
       <div className='flex justify-end space-x-2 pt-2'>
         {community.website && (
-          <a href={community.website} target='_blank' rel='noopener noreferrer'>
-            <Button variant='ghost' size='sm' className='hover:bg-accent/10'>
-              <Globe className='h-4 w-4' />
-            </Button>
-          </a>
+          <Button
+            variant='ghost'
+            size='sm'
+            className='hover:bg-accent/10'
+            onClick={(e) => {
+              e.preventDefault();
+              window.open(community.website, '_blank', 'noopener,noreferrer');
+            }}
+          >
+            <Globe className='h-4 w-4' />
+          </Button>
         )}
         {community.twitter && (
-          <a href={`https://twitter.com/${community.twitter}`} target='_blank' rel='noopener noreferrer'>
-            <Button variant='ghost' size='sm' className='hover:bg-accent/10'>
-              <Twitter className='h-4 w-4' />
-            </Button>
-          </a>
+          <Button
+            variant='ghost'
+            size='sm'
+            className='hover:bg-accent/10'
+            onClick={(e) => {
+              e.preventDefault();
+              window.open(`https://x.com/${community.twitter}`, '_blank', 'noopener,noreferrer');
+            }}
+          >
+            <XformerlyTwitter className='h-4 w-4' />
+          </Button>
         )}
       </div>
     </div>
@@ -109,10 +122,7 @@ export default function CommunityList({
   const endIndex = startIndex + itemsPerPage;
   const currentCommunities = communities.slice(startIndex, endIndex);
 
-  const handlePageChange = (page: number) => {
-    setCurrentPage(page);
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  };
+  const handlePageChange = (page: number) => setCurrentPage(page);
 
   return (
     <div className='space-y-8'>

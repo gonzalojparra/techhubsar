@@ -3,7 +3,6 @@
 import { motion } from 'motion/react';
 import {
   Globe,
-  Twitter,
   Github,
   Linkedin,
   MessageCircle,
@@ -17,6 +16,7 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 
 import type { Community } from '@/types/community';
+import XformerlyTwitter from '@/components/ui/x-formerly-twitter';
 
 const container = {
   hidden: { opacity: 0 },
@@ -100,8 +100,8 @@ export default function CommunityContent({ community }: CommunityContentProps) {
                     target='_blank'
                     rel='noopener noreferrer'
                   >
-                    <Twitter className='mr-2 h-4 w-4 group-hover:text-primary transition-colors' />
-                    Twitter
+                    <XformerlyTwitter className='mr-2 h-4 w-4 group-hover:text-primary transition-colors' />
+                    X (Twitter)
                   </a>
                 </Button>
               )}
@@ -199,11 +199,11 @@ export default function CommunityContent({ community }: CommunityContentProps) {
                       className='hover:bg-primary/10 hover:text-primary transition-colors'
                     >
                       <a
-                        href={`https://twitter.com/${member.twitter}`}
+                        href={`https://x.com/${member.twitter}`}
                         target='_blank'
                         rel='noopener noreferrer'
                       >
-                        <Twitter className='h-4 w-4' />
+                        <XformerlyTwitter className='h-4 w-4' />
                       </a>
                     </Button>
                   )}

@@ -1,7 +1,6 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { useIsMobile } from '@/hooks/useIsMobile';
 
 import CommunityList from '@/components/CommunityList';
 import ArgentinaMap from '@/components/ArgentinaMap';
@@ -16,7 +15,6 @@ export default function Home() {
   const [hoveredCommunityId, setHoveredCommunityId] = useState<string | null>(
     null
   );
-  const isMobile = useIsMobile();
 
   useEffect(() => {
     const loadCommunities = async () => {
@@ -29,9 +27,9 @@ export default function Home() {
   return (
     <div className='w-full'>
       <div className='container mx-auto px-4 py-4'>
-        <div className='flex flex-col lg:flex-row gap-8 mb-12'>
-          <div className={`${isMobile ? 'w-full' : 'lg:w-2/3'} relative`}>
-            <div className='aspect-[4/3] lg:h-[600px]'>
+        <div className='flex flex-col xl:flex-row gap-8 mb-12'>
+          <div className='w-full xl:w-2/3 relative'>
+            <div className='aspect-[4/3] md:aspect-[16/9] xl:aspect-auto xl:h-[600px]'>
               <ArgentinaMap
                 communities={communities}
                 onHoverCommunity={setHoveredCommunityId}
@@ -39,22 +37,24 @@ export default function Home() {
             </div>
           </div>
 
-          <div className={`${isMobile ? 'w-full' : 'lg:w-1/3'} flex flex-col justify-center`}>
+          <div className='w-full xl:w-1/3 flex flex-col justify-center'>
             <Spotlight />
-            <div className='relative'>
-              <h1 className='text-4xl lg:text-5xl font-bold mb-6 tech-gradient'>
+            <div className='relative space-y-4'>
+              <h1 className='text-3xl sm:text-4xl xl:text-5xl font-bold tracking-tight tech-gradient'>
                 Tech Communities in Argentina
               </h1>
-              <p className='text-xl text-muted-foreground'>
+              <p className='text-lg sm:text-xl text-muted-foreground max-w-prose'>
                 Discover and connect with tech enthusiasts across the country
               </p>
-              <AddCommunityButton />
+              <div className='pt-2'>
+                <AddCommunityButton />
+              </div>
             </div>
           </div>
         </div>
 
         <div className='w-full'>
-          <div className='bg-card/50 backdrop-blur-sm rounded-xl shadow-lg p-6 border border-border/50'>
+          <div className='bg-card/50 backdrop-blur-sm rounded-xl shadow-lg p-4 sm:p-6 border border-border/50'>
             <CommunityList
               communities={communities}
               hoveredCommunityId={hoveredCommunityId}

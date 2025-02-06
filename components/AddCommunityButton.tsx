@@ -3,6 +3,7 @@
 import Link from 'next/link';
 import { motion } from 'framer-motion';
 import { Plus } from 'lucide-react';
+
 import { cn } from '@/lib/utils';
 
 export default function AddCommunityButton() {
