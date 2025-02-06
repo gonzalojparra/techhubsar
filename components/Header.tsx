@@ -1,10 +1,11 @@
 'use client';
 
 import Link from 'next/link';
-import { usePathname } from 'next/navigation';
 import { useState, useEffect } from 'react';
-import { AnimatePresence, motion } from 'framer-motion';
+import { usePathname } from 'next/navigation';
+import { AnimatePresence, motion } from 'motion/react';
 import { Menu } from 'lucide-react';
+
 import { Button } from '@/components/ui/button';
 import {
   Sheet,
