@@ -1,18 +1,17 @@
-import type React from "react";
-import { Analytics } from "@vercel/analytics/react";
-import { Inter } from "next/font/google";
+import type React from 'react';
+import { GeistSans } from 'geist/font/sans';
+import { Analytics } from '@vercel/analytics/react';
 
-import Header from "@/components/Header";
-import Footer from "@/components/Footer";
-import { ThemeProvider } from "@/components/theme-provider";
+import Header from '@/components/Header';
+import Footer from '@/components/Footer';
+import { ThemeProvider } from '@/components/theme-provider';
+import { cn } from '@/lib/utils';
 
-import "./globals.css";
-
-const inter = Inter({ subsets: ["latin"] });
+import './globals.css';
 
 export const metadata = {
-  title: "TechHubsAr",
-  description: "Tech Communities in Argentina",
+  title: 'TechHubsAr',
+  description: 'Tech Communities in Argentina',
 };
 
 export default function RootLayout({
@@ -21,12 +20,21 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en" suppressHydrationWarning>
-      <body className={`${inter.className} min-h-screen flex flex-col`}>
-        <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
-          <div className="flex flex-col min-h-screen bg-background text-foreground">
+    <html
+      suppressHydrationWarning
+      className='min-h-screen scroll-smooth font-sans antialiased'
+      lang='en'
+    >
+      <body className={cn(
+        "min-h-screen bg-black/[0.96] antialiased",
+        GeistSans.className
+      )}>
+        <ThemeProvider attribute='class' defaultTheme='system' enableSystem>
+          <div className='flex flex-col min-h-screen text-foreground'>
             <Header />
-            <main className="flex-1 w-full">{children}</main>
+            <main className='flex-1 w-full'>
+              {children}
+            </main>
             <Footer />
           </div>
         </ThemeProvider>
