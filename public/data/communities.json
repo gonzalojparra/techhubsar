@@ -11,7 +11,7 @@
     "province": "Buenos Aires",
     "category": "Startups and Innovation",
     "website": "https://theonclub.com",
-    "twitter": "https://x.com/i/lists/1880013858141589714",
+    "twitter": "i/lists/1880013858141589714",
     "members": [
       {
         "name": "Acosta Lautaro",
@@ -315,6 +315,144 @@
         "name": "Dante Martinez",
         "github": "d4rm5",
         "linkedin": "dantemartinez5"
+      }
+    ]
+  },
+  {
+    "id": "8",
+    "name": "La Crypta",
+    "shortDescription": "La Crypta es una comunidad argentina dedicada al desarrollo, la educación y el intercambio de conocimientos dentro de los ecosistemas Bitcoin y Nostr.",
+    "fullDescription": "La Crypta es una comunidad argentina dedicada al desarrollo, la educación y el intercambio de conocimientos dentro de los ecosistemas Bitcoin y Nostr.",
+    "location": {
+      "lat": -34.564709,
+      "lng": -58.443054
+    },
+    "province": "Buenos Aires",
+    "category": "Bitcoin Community",
+    "website": "https://lacrypta.ar/",
+    "twitter": "LaCryptaOk",
+    "members": [
+      {
+        "name": "Agustin",
+        "github": "agustinkassis",
+        "twitter": "agustin_kassis"
+      },
+      {
+        "name": "Mariano",
+        "github": "mariano-perez-rodriguez"
+      },
+      {
+        "name": "Jota",
+        "github": "jjramirezn",
+        "twitter": "JuanJoseBTC"
+      },
+      {
+        "name": "Rapax",
+        "github": "rapax00",
+        "twitter": "rapax00"
+      },
+      {
+        "name": "Jona",
+        "github": "unllamas",
+        "twitter": "unllamas"
+      },
+      {
+        "name": "Guadis",
+        "twitter": "guadisguadix"
+      },
+      {
+        "name": "Naranja",
+        "twitter": "dimenaranja"
+      },
+      {
+        "name": "Andrea",
+        "github": "AndreaDiazCorreia",
+        "twitter": "andreadcorreia"
+      },
+      {
+        "name": "Fierillo",
+        "github": "Fierillo",
+        "twitter": "fierillo"
+      },
+      {
+        "name": "Fierillo",
+        "github": "Fierillo",
+        "twitter": "fierillo"
+      },
+      {
+        "name": "Fede"
+      },
+      {
+        "name": "Yayi",
+        "twitter": "yayi_morales_"
+      }
+    ]
+  },
+  {
+    "id": "9",
+    "name": "Argentina Developer",
+    "shortDescription": "Es una comunidad de desarrolladores argentinos.",
+    "fullDescription": "Somos una comunidad orientada al (y para) el desarrollo de software y otras áreas en IT. Nuestro objetivo es compartir conocimientos, experiencias y oportunidades laborales. Traé el mate y acompañanos!",
+    "location": {
+      "lat": -34.6039005,
+      "lng": -58.3808425
+    },
+    "province": "Buenos Aires",
+    "category": "Tech Community",
+    "website": "https://argentinadeveloper.vercel.app/",
+    "members": [
+      {
+        "name": "Nicolas Suarez",
+        "github": "imnicolas"
+      },
+      {
+        "name": "Paula Gonzalez",
+        "github": "PauTG"
+      },
+      {
+        "name": "Javier Rodriguez",
+        "github": "javicerodriguez",
+        "twitter": "Javicerodriguez"
+      },
+      {
+        "name": "Brahian Pereyra",
+        "github": "brahianpdev"
+      },
+      {
+        "name": "Nahuel Garrido",
+        "github": "nahugarrido"
+      },
+      {
+        "name": "Esteban Sayago",
+        "github": "puchinn"
+      },
+      {
+        "name": "Alan Farias",
+        "github": "AlanFarias97"
+      }
+    ]
+  },
+  {
+    "id": "10",
+    "name": "React Buenos Aires",
+    "shortDescription": "Comunidad de desarrolladores de React en Buenos Aires.",
+    "fullDescription": "React Buenos Aires es un grupo que reúne a desarrolladores y entusiastas de React y su ecosistema en Argentina. Organizamos charlas, talleres y espacios de networking para compartir conocimiento, debatir las últimas tendencias y fortalecer la comunidad local. Nuestro objetivo es fomentar la colaboración y el aprendizaje continuo, creando un entorno inclusivo para todos aquellos interesados en la librería de JavaScript más popular del mundo.",
+    "location": {
+      "lat": -34.6157129,
+      "lng": -58.5981081
+    },
+    "province": "Buenos Aires",
+    "category": "Tech Community",
+    "website": "https://www.meetup.com/es-ES/react-en-buenos-aires/",
+    "twitter": "https://x.com/React_BA",
+    "linkedin": "https://www.linkedin.com/company/100033526/admin/dashboard/",
+    "instagram": "https://www.instagram.com/react_ba/",
+    "members": [
+      {
+        "name": "Mariano Vazquez",
+        "github": "nanovazquez",
+        "twitter": "nanovazquez__",
+        "linkedin": "nanovazquez"
       }
     ]
   }
