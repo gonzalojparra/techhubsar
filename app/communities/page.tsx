@@ -278,7 +278,7 @@ export default function CommunitiesPage() {
                 <SelectContent>
                   {provinces.map((province) => (
                     <SelectItem key={province} value={province}>
-                      {province}
+                      {province.charAt(0).toUpperCase() + province.slice(1)}
                     </SelectItem>
                   ))}
                 </SelectContent>
