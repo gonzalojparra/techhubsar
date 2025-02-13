@@ -168,12 +168,13 @@ export default function CommunityContent({ community }: CommunityContentProps) {
               whileHover={{ y: -4 }}
               transition={{ duration: 0.2 }}
             >
-              <Card className='group bg-card/50 backdrop-blur-sm border border-border/50 transition-all duration-300 hover:shadow-xl hover:border-primary/50'>
+              <Card className='min-h-[142px] group bg-card/50 backdrop-blur-sm border border-border/50 transition-all duration-300 hover:shadow-xl hover:border-primary/50'>
                 <CardHeader>
                   <CardTitle className='text-lg font-medium'>
                     {member.name}
                   </CardTitle>
                 </CardHeader>
+
                 <CardContent className='flex gap-2'>
                   {member.github && (
                     <Button
